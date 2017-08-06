@@ -1,0 +1,60 @@
+<html>
+<head>
+</head>
+<body>
+    <section>
+        <h1>testing</h1>
+        <div id="chat">
+            <ul id="list">
+
+            </ul>
+        </div>
+        <!-- <div id="controls">
+            <input id="message" />
+            <button id="send-message">Send</button>
+        </div> -->
+    </section>
+    <script >
+        var list = document.getElementById('list');
+
+        for (let i = 1; i <= 5; i++) {
+            let item = document.createElement('li');
+            item.appendChild(document.createTextNode('Item ' + i));
+
+            item.onclick = function(ev) {
+                alert('Item ' + i + ' is clicked.');
+            };
+            list.appendChild(item);
+        }
+
+        // to achieve the same effect with 'var'
+        // you have to create a different context
+        // using a closure to preserve the value
+        for (var i = 1; i <= 5; i++) {
+            var item = document.createElement('li');
+            item.appendChild(document.createTextNode('Item ' + i));
+
+            (function(i){
+                item.onclick = function(ev) {
+                alert('Item ' + i + ' is clicked.');
+                };
+            })(i);
+            list.appendChild(item);
+        }
+
+
+        for (var i = 1; i <= 5; i++) {
+            var item = document.createElement('li');
+            item.appendChild(document.createTextNode('Item ' + i));
+
+            item.onclick = function(ev) {
+            alert('Item ' + i + ' is clicked.');
+            };
+            list.appendChild(item);
+        }
+
+
+    </script>
+   
+</body>
+</html>
